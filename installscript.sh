@@ -29,8 +29,6 @@ emerge-webrsync
 
 echo -e '\nPORTAGE_BINHOST="https://cloveros.ga"\nMAKEOPTS="-j8"\nEMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=2 -G"\nCFLAGS="-O2 -pipe -march=native"\nCXXFLAGS="${CFLAGS}"' >> /etc/portage/make.conf
 
-emerge grub dhcpcd
-
 #emerge gentoo-sources genkernel
 #wget http://liquorix.net/sources/4.9/config.amd64
 #MAKEOPTS="-j8" genkernel --kernel-config=config.amd64 all
@@ -42,6 +40,8 @@ mv kernel/*/ /lib/modules
 mv kernel/* /boot/
 rmdir kernel
 
+emerge grub dhcpcd
+
 grub-install /dev/sda
 grub-mkconfig > /boot/grub/grub.cfg
 
@@ -52,11 +52,11 @@ echo -e "$rootpassword\n$rootpassword" | passwd
 useradd $user
 echo -e "$userpassword\n$userpassword" | passwd user
 gpasswd -a $user wheel
-emerge openssh openssl
+emerge -1 openssh openssl
 echo "media-video/mpv ~amd64" >> /etc/portage/package.accept_keywords
-emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer
-sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-sed -Ei 's/^c([2-6]):2345/#\0/' /etc/inittab
+emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer linux-firmware
+sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
+sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
 rc-update add wpa_supplicant default
 cd /home/$user/
 rm .bash_profile
