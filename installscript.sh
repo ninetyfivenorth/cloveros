@@ -9,7 +9,7 @@ read -p "Enter preferred user password " userpassword
 mkdir gentoo
 
 echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
-mkfs.ext4 /dev/sda1
+mkfs.ext4 -F /dev/sda1
 mount /dev/sda1 gentoo
 
 cd gentoo
@@ -33,12 +33,9 @@ echo -e '\nPORTAGE_BINHOST="https://cloveros.ga"\nMAKEOPTS="-j8"\nEMERGE_DEFAULT
 #wget http://liquorix.net/sources/4.9/config.amd64
 #MAKEOPTS="-j8" genkernel --kernel-config=config.amd64 all
 
-wget https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.xz
-tar xf kernel.xz
+curl https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.tar.xz | tar xJ -C /boot
 mkdir /lib/modules/
-mv kernel/*/ /lib/modules
-mv kernel/* /boot/
-rmdir kernel
+curl https://raw.githubusercontent.com/chiru-no/cloveros/master/modules.tar.xz | tar xJ -C /lib/modules/
 
 emerge grub dhcpcd
 
