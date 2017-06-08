@@ -51,11 +51,13 @@ echo -e "$userpassword\n$userpassword" | passwd user
 gpasswd -a $user wheel
 emerge -1 openssh openssl
 echo "media-video/mpv ~amd64" >> /etc/portage/package.accept_keywords
-emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer linux-firmware
+emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer linux-firmware alsa-utils
 rm -Rf /usr/portage/packages/*
 sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
 sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
 rc-update add wpa_supplicant default
+rc-update add alsasound default
+gpasswd -a $user audio
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
 cd /home/$user/
 rm .bash_profile
