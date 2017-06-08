@@ -61,6 +61,9 @@ rm .bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.twmrc
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/wallpaper.png
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect lcdfilter set infinality
 
 exit
 
