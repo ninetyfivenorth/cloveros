@@ -1,0 +1,14 @@
+screenshot-format=png
+screenshot-png-compression=4
+screenshot-tag-colorspace=yes
+screenshot-template="%F_%P"
+
+profile=opengl-hq
+video-sync=display-resample
+correct-downscaling=yes
+sigmoid-upscaling=yes
+deband=yes
+dither-depth=auto
+#scale=ewa_lanczossharp
+#cscale=ewa_lanczossoft
+#dscale=mitchelll
