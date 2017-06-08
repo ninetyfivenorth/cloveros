@@ -52,9 +52,11 @@ echo -e "$rootpassword\n$rootpassword" | passwd
 useradd $user
 echo -e "$userpassword\n$userpassword" | passwd user
 gpasswd -a $user wheel
-emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash
-sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
-sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
+emerge openssh openssl
+echo "media-video/mpv ~amd64" >> /etc/portage/package.accept_keywords
+emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer
+sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+sed -Ei 's/^c([2-6]):2345/#\0/' /etc/inittab
 rc-update add wpa_supplicant default
 cd /home/$user/
 rm .bash_profile
