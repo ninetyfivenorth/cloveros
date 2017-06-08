@@ -1,4 +1,11 @@
 #preference
+sys-boot/grub -grub_platforms_efi-64
+app-crypt/gcr gtk
+app-crypt/pinentry -gnome-keyring
+sys-auth/pambase -gnome-keyring
+dev-lang/R X cairo
+sys-block/gparted btrfs dmraid f2fs fat hfs jfs mdadm ntfs reiserfs reiser4 xfs
+net-p2p/transmission qt5
 kde-plasma/powerdevil -wireless
 app-editors/vim -minimal
 dev-util/google-perftools -minimal
@@ -8,9 +15,8 @@ app-editors/nano -minimal
 media-gfx/fontforge gtk
 media-gfx/graphviz gtk
 kde-frameworks/kio -handbook
-media-video/xine-ui curl
+media-video/xine-ui curl X
 dev-lang/ruby -berkdb -gdbm -ncurses -readline
-dev-lang/perl -berkdb
 dev-vcs/subversion -berkdb
 net-nds/openldap -berkdb
 dev-libs/cyrus-sasl -berkdb
@@ -20,13 +26,14 @@ sys-apps/iproute2 -berkdb
 sys-apps/man-db -berkdb
 net-libs/glib-networking -libproxy
 net-misc/dhcpcd -udev
-net-wireless/wpa_supplicant -hs2-0 -readline -ssl
+net-wireless/wpa_supplicant qt5
 sys-apps/openrc -ncurses -netifrc -pam -unicode
 net-misc/iputils -caps -filecaps
 app-admin/sudo -pam -sendmail
 media-libs/harfbuzz icu
 media-libs/libvpx postproc
 dev-libs/boost icu
+x11-libs/gdk-pixbuf X
 virtual/ffmpeg X
 media-video/ffmpeg X openssl x265 hevc fdk libass vorbis ogg network vpx rtmp x264 aac wavpack opus mp3 sdl theora xvid gme
 app-text/texlive X cjk context detex dvi2tty dvipdfm epspdf extra games graphics humanities jadetex luatex metapost music omega png pstricks publishers science tex4ht texi2html truetype xetex xindy xml
@@ -34,7 +41,7 @@ dev-cpp/gtkmm wayland X
 dev-libs/weston xwayland
 media-video/mpv bluray encode lua libmpv wayland -xscreensaver
 x11-base/xorg-server xvfb -minimal wayland
-dev-libs/efl X -wayland
+dev-libs/efl X -wayland opengl
 x11-wm/enlightenment X -wayland
 media-libs/elementary X -wayland
 x11-libs/gtk+ X wayland
@@ -51,7 +58,7 @@ net-im/pidgin spell
 net-irc/hexchat spell
 dev-qt/qtgui gtkstyle
 dev-qt/qtwidgets gtkstyle
-media-libs/mesa llvm gallium gles2 wayland
+media-libs/mesa d3d9 llvm gallium gles2 wayland vulkan
 x11-drivers/xf86-video-intel uxa sna
 www-serverrs/nginx http2
 net-misc/curl http2
@@ -109,7 +116,7 @@ media-sound/mixxx shout aac ffmpeg hid mp3 mp4 wavpack
 www-client/w3m imlib gpm
 app-office/texstudio video
 sci-mathematics/octave gui fftw curl gnuplot postscript jit
-net-p2p/eiskaltdcpp json -emoticons -minimal -spell dht pcre
+net-p2p/eiskaltdcpp json -emoticons -minimal -spell gtk dht pcre
 www-client/links fbcon gpm
 app-arch/p7zip wxwidgets rar
 media-gfx/imagemagick png
@@ -882,3 +889,17 @@ sys-apps/dbus X
 # required by kde-plasma/plasma-meta-5.8.6::gentoo
 # required by plasma-meta (argument)
 >=kde-frameworks/kdelibs4support-5.34.0 X
+# required by x11-misc/pcmanfm-1.2.3::gentoo
+# required by lxde-base/lxde-meta-0.5.5-r4::gentoo
+# required by lxde-meta (argument)
+>=x11-libs/libfm-1.2.4 gtk
+# required by net-p2p/deluge-1.3.14::gentoo
+# required by deluge (argument)
+>=net-libs/libtorrent-rasterbar-1.0.10 python
+# required by sci-mathematics/octave-4.2.1::gentoo[gui]
+# required by octave (argument)
+>=x11-libs/qscintilla-2.9.4 qt5
+# required by sci-libs/umfpack-5.6.2::gentoo[cholmod]
+# required by sci-mathematics/octave-4.2.1::gentoo[sparse]
+# required by octave (argument)
+>=sci-libs/cholmod-2.1.2 -minimal
