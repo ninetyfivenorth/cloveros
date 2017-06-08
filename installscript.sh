@@ -54,7 +54,8 @@ echo "media-video/mpv ~amd64" >> /etc/portage/package.accept_keywords
 emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer rtorrent linux-firmware alsa-utils
 rm -Rf /usr/portage/packages/*
 sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
-sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
+sed -Ei "s@c([2-6]):2345:respawn:/sbin/agetty 38400 tty@#\0@" /etc/inittab
+sed -i "s@c1:12345:respawn:/sbin/agetty 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
 rc-update add alsasound default
 gpasswd -a $user audio
