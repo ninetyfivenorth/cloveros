@@ -66,15 +66,15 @@ rm .bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.twmrc
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/wallpaper.png
+echo 'session = /home/$user/.rtorrent\ndirectory = /home/$user/Downloads/\nport_range = 53165-62153\ndht = on\npeer_exchange = yes\nuse_udp_trackers = yes' > .rtorrent.rc
+mkdir Downloads
+mkdir .rtorrent
 mkdir .mpv
 cd .mpv
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.mpv/config
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
-echo 'session = /home/$user/.rtorrent\ndirectory = /home/$user/Downloads/\nport_range = 53165-62153\ndht = on\npeer_exchange = yes\nuse_udp_trackers = yes' > .rtorrent.rc
-mkdir Downloads
-mkdir .rtorrent
 
 exit
 
