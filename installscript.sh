@@ -14,7 +14,7 @@ mount /dev/sda1 gentoo
 
 cd gentoo
 
-wget https://gentoo.osuosl.org/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170525.tar.bz2
+wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170525.tar.bz2
 tar pxf stage3*
 rm stage3*
 
@@ -33,7 +33,7 @@ echo -e '\nPORTAGE_BINHOST="https://cloveros.ga"\nMAKEOPTS="-j8"\nEMERGE_DEFAULT
 #wget http://liquorix.net/sources/4.9/config.amd64
 #MAKEOPTS="-j8" genkernel --kernel-config=config.amd64 all
 
-curl https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.tar.xz | tar xJ -C /boot
+curl https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.tar.xz | tar xJ -C /boot/
 mkdir /lib/modules/
 curl https://raw.githubusercontent.com/chiru-no/cloveros/master/modules.tar.xz | tar xJ -C /lib/modules/
 
