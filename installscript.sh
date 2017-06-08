@@ -55,9 +55,9 @@ emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox e
 rm -Rf /usr/portage/packages/*
 sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
 sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
-rc-update add wpa_supplicant default
 rc-update add alsasound default
 gpasswd -a $user audio
+rc-update add wpa_supplicant default
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
 cd /home/$user/
 rm .bash_profile
