@@ -58,6 +58,7 @@ sed -Ei "s/^c([2-6]):2345/#\0/" /etc/inittab
 sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
 rc-update add alsasound default
 gpasswd -a $user audio
+gpasswd -a $user video
 rc-update add wpa_supplicant default
 echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
 cd /home/$user/
