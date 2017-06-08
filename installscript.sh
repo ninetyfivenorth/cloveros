@@ -35,7 +35,7 @@ emerge grub dhcpcd
 #wget http://liquorix.net/sources/4.9/config.amd64
 #MAKEOPTS="-j8" genkernel --kernel-config=config.amd64 all
 
-wget https://cloveros.ga/s/kernel.xz
+wget https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.xz
 tar xf kernel.xz
 mkdir /lib/modules/
 mv kernel/*/ /lib/modules
