@@ -35,6 +35,7 @@ menu "Applications"
 "emacs" !"emacs &"
 "gimp" !"gimp &"
 "smplayer" !"smplayer &"
+"rtorrent" !"aterm +sb -tr -sh 30 -e rtorrent &"
 }
 
 IconManagerDontShow
