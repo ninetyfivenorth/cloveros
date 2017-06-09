@@ -73,6 +73,7 @@ mkdir .rtorrent
 mkdir .mpv
 cd .mpv
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.mpv/config
+chown -R $user /home/$user/
 eselect fontconfig enable 52-infinality.conf
 eselect infinality set infinality
 eselect lcdfilter set infinality
