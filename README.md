@@ -17,11 +17,11 @@ Boot up a Linux LiveCD and run `bash <(curl -s https://cloveros.ga/s/installscri
 `emerge -uavD world`
 
 ### Installing a program when emerge gives an error
-`emerge -auvDG filezilla world`
+`emerge -uavD filezilla world`
 
 `dispatch-conf`
 
-`emerge -auvDG filezilla world`
+`emerge -uavD filezilla world`
 
 ## FAQ
 
