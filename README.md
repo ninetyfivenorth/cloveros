@@ -1,8 +1,6 @@
 # cloveros
 ![CloverOS GNU/Linux](https://raw.githubusercontent.com/chiru-no/cloveros/master/logo.png "CloverOS GNU/Linux")
 
-This is the git page for CloverOS GNU/Linux. Official site at https://cloveros.ga
-
 CloverOS GNU/Linux is a GNU/Linux distro that runs on Gentoo GNU/Linux and tries to be like CrunchBang. It consists of the install script and the CloverOS GNU/Linux packages repo (Binhost) that contains unique USE flags and CFLAGS.
 
 ## Quick Start
