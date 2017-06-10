@@ -5,6 +5,6 @@ if [ -z "$DISPLAY" ]; then
        X&
        sleep 1
        twm&
-       feh --bg-fill wallpaper.png
+       feh --bg-max wallpaper.png
     fi
 fi
