@@ -1,6 +1,4 @@
 # cloveros
-CloverOS GNU/Linux
-
 ![CloverOS GNU/Linux](https://raw.githubusercontent.com/chiru-no/cloveros/master/logo.png "CloverOS GNU/Linux")
 
 This is the git page for CloverOS GNU/Linux. Official site at https://cloveros.ga
