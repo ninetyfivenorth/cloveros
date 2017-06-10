@@ -1,4 +1,6 @@
 #preference
+app-emulation/wine -custom-cflags
+x11-wm/xmonad -default-term
 sys-boot/grub -grub_platforms_efi-64
 app-crypt/gcr gtk
 app-crypt/pinentry -gnome-keyring
@@ -35,12 +37,12 @@ media-libs/libvpx postproc
 dev-libs/boost icu
 x11-libs/gdk-pixbuf X
 virtual/ffmpeg X
-media-video/ffmpeg X openssl x265 hevc fdk libass vorbis ogg network vpx rtmp x264 aac wavpack opus mp3 sdl theora xvid gme
+media-video/ffmpeg X gnutls x265 hevc libass vorbis ogg network vpx rtmp x264 aac wavpack opus mp3 sdl theora xvid gme
 app-text/texlive X cjk context detex dvi2tty dvipdfm epspdf extra games graphics humanities jadetex luatex metapost music omega png pstricks publishers science tex4ht texi2html truetype xetex xindy xml
 dev-cpp/gtkmm wayland X
 dev-libs/weston xwayland
 media-video/mpv bluray encode lua libmpv wayland -xscreensaver
-x11-base/xorg-server xvfb -minimal wayland
+x11-base/xorg-server glamor wayland xvfb -minimal
 dev-libs/efl X -wayland opengl
 x11-wm/enlightenment X -wayland
 media-libs/elementary X -wayland
@@ -58,7 +60,7 @@ net-im/pidgin spell
 net-irc/hexchat spell
 dev-qt/qtgui gtkstyle
 dev-qt/qtwidgets gtkstyle
-media-libs/mesa d3d9 llvm gallium gles2 wayland vulkan
+media-libs/mesa d3d9 vulkan llvm gallium gles2 wayland
 x11-drivers/xf86-video-intel uxa sna
 www-serverrs/nginx http2
 net-misc/curl http2
@@ -67,8 +69,8 @@ net-libs/webkit-gtk -introspection -gstreamer -geoloc -geolocation -webgl
 media-video/smplayer streaming qt5
 media-video/mkvtoolnix qt5
 media-video/makemkv qt5
-app-editors/emacs -gtk3 xft sound games alsa jpeg png gif
-app-emacs/emacs-common-gentoo games
+app-editors/emacs X gtk toolkit-scroll-bars xft sound games alsa jpeg png gif
+app-emacs/emacs-common-gentoo X games
 net-p2p/retroshare feedreader voip
 games-emulation/pcsxr -sdl
 sys-kernel/spl -custom-cflags
@@ -128,7 +130,7 @@ dev-lang/php curl gd fpm pdo
 app-eselect/eselect-php fpm
 net-p2p/rtorrent xmlrpc
 media-sound/deadbeef ape aac alsa converter cover cover-imlib2 curl flac lastfm mp3 nullout tta vorbis zip adplug alac cdda cover-network dts dumb equalizer ffmpeg gme hotkeys libnotify libsamplerate m3u -mac midi mms mono2stereo musepack oss pltbrowser psf -pulseaudio shellexec shellexecui shn sid sndfile -unity vtx wavpack wma supereq notify
-app-emulation/qemu sdl usb
+app-emulation/qemu sdl usb virgl
 
 #required
 net-nds/openldap sasl
@@ -903,3 +905,18 @@ sys-apps/dbus X
 # required by sci-mathematics/octave-4.2.1::gentoo[sparse]
 # required by octave (argument)
 >=sci-libs/cholmod-2.1.2 -minimal
+# required by x11-drivers/xf86-video-vmware-13.2.1::gentoo
+# required by xf86-video-vmware (argument)
+>=media-libs/mesa-17.0.6 xa
+# required by x11-drivers/xf86-video-vmware-13.2.1::gentoo
+# required by xf86-video-vmware (argument)
+>=x11-libs/libdrm-2.4.80 libkms video_cards_vmware
+# required by x11-misc/mozo-1.12.0-r1::gentoo[-gtk3]
+# required by mate-base/mate-1.12-r1::gentoo[base]
+# required by mate (argument)
+>=mate-base/mate-menus-1.12.0-r1 python
+# required by mate-base/caja-1.12.7-r2::gentoo
+# required by mate-base/mate-control-center-1.12.1-r1::gentoo
+# required by mate-base/mate-1.12-r1::gentoo[base]
+# required by mate (argument)
+>=gnome-base/gvfs-1.30.4 udisks
