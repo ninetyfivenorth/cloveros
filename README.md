@@ -28,6 +28,17 @@ Boot up a Linux LiveCD and run `bash <(curl -s https://cloveros.ga/s/installscri
 ### Is this an overlay?
 No, this uses regular Gentoo Portage only. Same versions and USE flag options.
 
+### Package isn't available
+Make an issue so I can add the package. In the meantime, edit /etc/make.conf and edit the following line:
+
+`EMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=2 -G"`
+
+to
+
+`EMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=2"`
+
+This disables the binhost and uses Portage's ebuilds for packages.
+
 ### Manual partitoning
 Edit the following lines of the install script:
 
