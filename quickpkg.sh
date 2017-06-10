@@ -1,5 +1,5 @@
 emerge --sync
-emerge -uvDN --exclude=glibc world
+emerge -uvDN world
 mv /usr/portage/packages/s/ .
 rm -Rf /usr/portage/packages/*
 quickpkg --include-unmodified-config=y "*/*" | ansi2html | tail -n +1081 | head -n -7 > s/quickpkg.txt
