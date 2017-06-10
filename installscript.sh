@@ -58,26 +58,26 @@ sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc
 sed -Ei "s@c([2-6]):2345:respawn:/sbin/agetty 38400 tty@#\0@" /etc/inittab
 sed -i "s@c1:12345:respawn:/sbin/agetty 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
+echo -e "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
 rc-update add alsasound default
+rc-update add wpa_supplicant default
+eselect fontconfig enable 52-infinality.conf
+eselect infinality set infinality
+eselect lcdfilter set infinality
 gpasswd -a $user audio
 gpasswd -a $user video
-rc-update add wpa_supplicant default
-echo -e "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
 cd /home/$user/
 rm .bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.twmrc
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/wallpaper.png
-echo 'session = /home/$user/.rtorrent\ndirectory = /home/$user/Downloads/\nport_range = 53165-62153\ndht = on\npeer_exchange = yes\nuse_udp_trackers = yes' > .rtorrent.rc
+echo -e "session = /home/$user/.rtorrent\ndirectory = /home/$user/Downloads/\nport_range = 53165-62153\ndht = on\npeer_exchange = yes\nuse_udp_trackers = yes" > .rtorrent.rc
 mkdir Downloads
 mkdir .rtorrent
 mkdir .mpv
 cd .mpv
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.mpv/config
 chown -R $user /home/$user/
-eselect fontconfig enable 52-infinality.conf
-eselect infinality set infinality
-eselect lcdfilter set infinality
 
 exit
 
