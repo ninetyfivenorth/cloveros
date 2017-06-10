@@ -13,6 +13,7 @@ Boot up a Linux LiveCD and run `bash <(curl -s https://cloveros.ga/s/installscri
 
 ### Upgrading system
 `emerge --sync`
+
 `emerge -uavD world`
 
 ### Installing a program when emerge gives an error
