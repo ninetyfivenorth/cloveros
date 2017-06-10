@@ -49,6 +49,7 @@ echo -e "$rootpassword\n$rootpassword" | passwd
 useradd $user
 echo -e "$userpassword\n$userpassword" | passwd user
 gpasswd -a $user wheel
+
 emerge -1 openssh openssl
 echo "media-video/mpv ~amd64" >> /etc/portage/package.accept_keywords
 emerge xorg-server twm feh aterm sudo xfe wpa_supplicant dash porthole firefox emacs gimp mpv smplayer rtorrent linux-firmware alsa-utils
