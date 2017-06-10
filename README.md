@@ -21,7 +21,9 @@ emerge -uavD world`
 
 ### Installing a program when emerge gives an error
 `emerge -auvDG filezilla world`
+
 `dispatch-conf`
+
 `emerge -auvDG filezilla world`
 
 ## FAQ
