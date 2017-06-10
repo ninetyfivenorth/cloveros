@@ -12,8 +12,8 @@ Boot up a Linux LiveCD and run `bash <(curl -s https://cloveros.ga/s/installscri
 `emerge filezilla`
 
 ### Upgrading system
-`emerge --sync
-emerge -uavD world`
+`emerge --sync`
+`emerge -uavD world`
 
 ### Installing a program when emerge gives an error
 `emerge -auvDG filezilla world`
