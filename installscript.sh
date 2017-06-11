@@ -69,6 +69,7 @@ gpasswd -a $user video
 cd /home/$user/
 rm .bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.bash_profile
+wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.zshrc
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/.twmrc
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/home/user/wallpaper.png
 echo -e "session = /home/$user/.rtorrent\ndirectory = /home/$user/Downloads/\nport_range = 53165-62153\ndht = on\npeer_exchange = yes\nuse_udp_trackers = yes" > .rtorrent.rc
