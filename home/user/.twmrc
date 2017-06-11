@@ -28,7 +28,7 @@ menu "Applications"
 {
 "Applications" f.title
 "aterm" !"aterm +sb -tr -sh 30 -e dash &"
-"urxvt" !"urxvt &"
+"urxvt" !"urxvt -e zsh &"
 "xfe" !"xfe &"
 "wifi" !"wpa_gui &"
 "porthole" !"porthole &"
