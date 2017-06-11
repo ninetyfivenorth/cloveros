@@ -10,6 +10,7 @@ mkdir gentoo
 
 echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
 mkfs.ext4 -F /dev/sda1
+tune2fs -O ^metadata_csum /dev/sda1
 mount /dev/sda1 gentoo
 
 cd gentoo
