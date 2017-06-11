@@ -39,7 +39,7 @@ to
 
 This disables the binhost and uses Portage's ebuilds for packages.
 
-### Manual partitoning
+### Manual partitioning
 Edit the following lines of the install script:
 
 `echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda` <-- Remove this entirely.
