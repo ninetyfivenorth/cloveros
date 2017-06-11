@@ -5,7 +5,6 @@ sys-boot/grub -grub_platforms_efi-64
 app-crypt/gcr gtk
 app-crypt/pinentry -gnome-keyring
 sys-auth/pambase -gnome-keyring
-dev-lang/R X cairo
 sys-block/gparted btrfs dmraid f2fs fat hfs jfs mdadm ntfs reiserfs reiser4 xfs
 net-p2p/transmission qt5
 kde-plasma/powerdevil -wireless
@@ -17,7 +16,6 @@ app-editors/nano -minimal
 media-gfx/fontforge gtk
 media-gfx/graphviz gtk
 kde-frameworks/kio -handbook
-media-video/xine-ui curl X
 dev-lang/ruby -berkdb -gdbm -ncurses -readline
 dev-vcs/subversion -berkdb
 net-nds/openldap -berkdb
@@ -35,6 +33,9 @@ app-admin/sudo -pam -sendmail
 media-libs/harfbuzz icu
 media-libs/libvpx postproc
 dev-libs/boost icu
+media-video/xine-ui curl X
+app-admin/conky X
+dev-lang/R X cairo
 x11-libs/gdk-pixbuf X
 virtual/ffmpeg X
 media-video/ffmpeg X gnutls x265 hevc libass vorbis ogg network vpx rtmp x264 aac wavpack opus mp3 sdl theora xvid gme
@@ -129,7 +130,7 @@ net-analyzer/vnstat gd
 dev-lang/php curl gd fpm pdo
 app-eselect/eselect-php fpm
 net-p2p/rtorrent xmlrpc
-media-sound/deadbeef ape aac alsa converter cover cover-imlib2 curl flac lastfm mp3 nullout tta vorbis zip adplug alac cdda cover-network dts dumb equalizer ffmpeg gme hotkeys libnotify libsamplerate m3u -mac midi mms mono2stereo musepack oss pltbrowser psf -pulseaudio shellexec shellexecui shn sid sndfile -unity vtx wavpack wma supereq notify
+media-sound/deadbeef aac adplug alac alsa cdda converter cover cover-imlib2 cover-network curl dts dumb equalizer ffmpeg flac -gtk2 hotkeys lastfm libnotify libsamplerate m3u mad midi mms mono2stereo mp3 musepack nullout oss psf shn sid sndfile tta vorbis vtx wavpack wma zip cdparanoia -gme gtk3 -libav mac mpg123 -nls playlist-browser -pulseaudio sc68 -shell-exec -unity
 app-emulation/qemu sdl usb virgl
 
 #required
