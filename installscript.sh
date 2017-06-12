@@ -17,7 +17,7 @@ cd gentoo
 
 wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170525.tar.bz2
 tar pxf stage3*
-rm stage3*
+rm -f stage3*
 
 cp /etc/resolv.conf etc
 mount -t proc none proc
