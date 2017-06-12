@@ -1,7 +1,6 @@
-- make livecd
 - build more software (need user input)
-- make website
-- make installer
-- urxvt ricing
+- make livecd
+- more mpv rice
+- more terminal rice
 - try tinycore kernel config and see if it's viable
 - test deblobbed kernel
