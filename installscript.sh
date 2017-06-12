@@ -4,7 +4,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 read -p "Automatic partitioning (a) or manual partitioning? (m) [a/m] " -n 1 partitioning
-echo ""
+echo
 if [[ $partitioning = "a" ]]; then
     read -e -p "Enter drive for CloverOS installation: " -i "/dev/sda" drive
     partition=${drive}1
@@ -24,7 +24,7 @@ Is this correct? [y/n] " -n 1 yn
 if [[ $yn != "y" ]]; then
     exit 1
 fi
-echo ""
+echo
 
 read -p "Enter preferred root password " rootpassword
 read -p "Enter preferred username " user
