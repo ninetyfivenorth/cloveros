@@ -4,3 +4,4 @@
 - make installer
 - urxvt ricing
 - try tinycore kernel config and see if it's viable
+- test deblobbed kernel

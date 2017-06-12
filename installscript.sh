@@ -2,16 +2,41 @@ if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
+
+read -p "Automatic partitioning (a) or manual partitioning? (m) [a/m] " -n 1 partitioning
+echo ""
+if [[ $partitioning = "a" ]]; then
+    read -e -p "Enter drive for CloverOS installation: " -i "/dev/sda" drive
+    partition=${drive}1
+elif [[ $partitioning = "m" ]]; then
+    read -e -p "Enter partition to install to: " -i "/dev/sda1" partition
+    drive=${partition%"${partition##*[!0-9]}"}
+else
+    echo "Invalid option."
+    exit 1
+fi
+drive=${drive#*/dev/}
+partition=${partition#*/dev/}
+read -p "Partitioning: $partitioning
+Drive: /dev/$drive
+Partition: /dev/$partition
+Is this correct? [y/n] " -n 1 yn
+if [[ $yn != "y" ]]; then
+    exit 1
+fi
+
 read -p "Enter preferred root password " rootpassword
 read -p "Enter preferred username " user
 read -p "Enter preferred user password " userpassword
 
 mkdir gentoo
 
-echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda
-mkfs.ext4 -F /dev/sda1
-tune2fs -O ^metadata_csum /dev/sda1
-mount /dev/sda1 gentoo
+if [[ $partitioning = "a" ]]; then
+    echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/$drive
+fi
+mkfs.ext4 -F /dev/$partition
+tune2fs -O ^metadata_csum /dev/$partition
+mount /dev/$partition gentoo
 
 cd gentoo
 
@@ -40,7 +65,7 @@ wget -O - https://raw.githubusercontent.com/chiru-no/cloveros/master/modules.tar
 
 emerge grub dhcpcd
 
-grub-install /dev/sda
+grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
 
 rc-update add dhcpcd default
