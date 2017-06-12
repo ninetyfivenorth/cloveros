@@ -24,6 +24,7 @@ Is this correct? [y/n] " -n 1 yn
 if [[ $yn != "y" ]]; then
     exit 1
 fi
+echo ""
 
 read -p "Enter preferred root password " rootpassword
 read -p "Enter preferred username " user
