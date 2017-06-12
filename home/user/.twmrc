@@ -27,7 +27,7 @@ IconManagerBackground "black"
 menu "Applications"
 {
 "Applications" f.title
-"aterm" !"aterm +sb -tr -sh 30 -e dash &"
+"aterm" !"aterm +sb -tr -sh 10 -e dash &"
 "urxvt" !"urxvt -e zsh &"
 "xfe" !"xfe &"
 "wifi" !"wpa_gui &"

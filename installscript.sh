@@ -47,7 +47,7 @@ rc-update add dhcpcd default
 
 echo -e "$rootpassword\n$rootpassword" | passwd
 useradd $user
-echo -e "$userpassword\n$userpassword" | passwd user
+echo -e "$userpassword\n$userpassword" | passwd $user
 gpasswd -a $user wheel
 
 emerge -1 openssh openssl
