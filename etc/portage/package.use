@@ -72,6 +72,7 @@ media-video/mkvtoolnix qt5
 media-video/makemkv qt5
 app-editors/emacs X gtk toolkit-scroll-bars xft sound games alsa jpeg png gif
 app-emacs/emacs-common-gentoo X games
+app-editors/xemacs X
 net-p2p/retroshare feedreader voip
 games-emulation/pcsxr -sdl
 sys-kernel/spl -custom-cflags
