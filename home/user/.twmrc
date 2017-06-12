@@ -38,6 +38,8 @@ menu "Applications"
 "smplayer" !"smplayer &"
 "rtorrent" !"aterm +sb -tr -sh 30 -e rtorrent &"
 "weechat" !"aterm +sb -tr -sh 30 -e weechat &"
+"reboot" !"sudo reboot"
+"shutdown" !"sudo poweroff"
 }
 
 IconManagerDontShow
