@@ -931,3 +931,11 @@ sys-apps/dbus X
 # required by @selected
 # required by @world (argument)
 >=net-libs/gtk-vnc-0.6.0 python
+# required by dev-python/wxpython-3.0.2.0::gentoo
+# required by sci-electronics/kicad-4.0.4::gentoo[python]
+# required by kicad (argument)
+>=x11-libs/wxGTK-3.0.2.0-r2 tiff
+# required by x11-libs/wxGTK-3.0.2.0-r2::gentoo[X,tiff]
+# required by sci-electronics/kicad-4.0.4::gentoo
+# required by kicad (argument)
+>=media-libs/tiff-4.0.8 abi_x86_32
