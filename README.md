@@ -38,14 +38,3 @@ to
 `EMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=2"`
 
 This disables the binhost and uses Portage's ebuilds for packages.
-
-### Manual partitioning
-Edit the following lines of the install script:
-
-`echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/sda` <-- Remove this entirely.
-
-`mkfs.ext4 -F /dev/sda1` <-- Change /dev/sda1
-
-`mount /dev/sda1 gentoo` <-- Change /dev/sda1
-
-`grub-install /dev/sda` <-- Change to correct drive letter. When booting, use F12 to manually select drive.
