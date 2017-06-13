@@ -23,7 +23,7 @@ deband-grain=24
 deband-iterations=2
 deband-range=12
 deband-threshold=48
-hdr-tone-mapping=mobius
+hdr-tone-mapping=reinhard
 tone-mapping-param=0.4
 
 [ultra]
