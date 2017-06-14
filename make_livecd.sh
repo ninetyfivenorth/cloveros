@@ -83,4 +83,5 @@ exit
 EOF
 
 cd ..
+umount -l gentoo/*
 mksquashfs gentoo image.squashfs -b 1024k -comp xz
