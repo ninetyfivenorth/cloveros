@@ -48,10 +48,10 @@ grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
 
 sed -i "s@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
-sed -i "s@urxvt -e sudo ./installscript.sh \&@@" /home/user/.bash_profile
-sed -i 's@#    read -p "Start X? [y/n]" -n 1 yn@    read -p "Start X? [y/n]" -n 1 yn@' /home/user/.bash_profile
-sed -i 's@#    if [[ $yn == "Y" || $yn == "y" ]]; then@    if [[ $yn == "Y" || $yn == "y" ]]; then@' /home/user/.bash_profile
-sed -i 's@#    fi@    fi@' /home/user/.bash_profile
+sed -i "s@urxvt -e sudo ./livecd_install.sh \&@@" /home/user/.bash_profile
+sed -i "2,3 s/^#*//" /home/user/.bash_profile
+sed -i "10 s/^#*//" /home/user/.bash_profile
+sed -i "/urxvt -e sudo .\/livecd_install.sh &/d" /home/user/.bash_profile
 
 EOF
 
