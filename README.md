@@ -3,9 +3,6 @@
 
 CloverOS GNU/Linux is a GNU/Linux distro that runs on Gentoo GNU/Linux and tries to be like CrunchBang. It consists of the install script and the CloverOS GNU/Linux packages repo (Binhost) that contains unique USE flags and CFLAGS.
 
-## Quick Start
-Boot up a Linux LiveCD and run `bash <(curl -s https://cloveros.ga/s/installscript.sh)`. **This wipes /dev/sda**, installer coming soon.
-
 ## Cheat sheet
 
 ### Installing program
