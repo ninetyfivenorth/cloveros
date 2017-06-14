@@ -75,7 +75,7 @@ chown -R $user /home/$user/
 emerge gparted
 sed -i "s@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s@twm\&@twm\&\nurxvt -e sudo ./installscript.sh \&@" /home/user/.bash_profile
-wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_installer.txt -O /home/user/installscript.sh
+wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_install.txt -O /home/user/installscript.sh
 chmod +x /home/user/installscript.sh
 
 exit
