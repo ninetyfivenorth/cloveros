@@ -25,6 +25,8 @@ read -p "Enter preferred root password " rootpassword
 read -p "Enter preferred username " user
 read -p "Enter preferred user password " userpassword
 
+mkdir gentoo
+
 if [[ $partitioning = "a" ]]; then
     echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/$drive
 fi
@@ -32,7 +34,7 @@ mkfs.ext4 -F /dev/$partition
 tune2fs -O ^metadata_csum /dev/$partition
 mount /dev/$partition gentoo
 
-unsquashfs -d gentoo /mnt/cdrom/image.squashfs
+unsquashfs -df gentoo /mnt/cdrom/image.squashfs
 
 cat << EOF | chroot gentoo
 
