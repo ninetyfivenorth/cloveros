@@ -5,7 +5,7 @@ fi
 
 rootpassword=password
 user=user
-userpassword=userpassword
+userpassword=password
 
 mkdir gentoo
 cd gentoo
