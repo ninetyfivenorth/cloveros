@@ -80,6 +80,9 @@ sed -i "10 s/^/#/" /home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_install.sh -O /home/user/livecd_install.sh
 chmod +x /home/user/livecd_install.sh
 
+emerge -uavD world
+rm -Rf /usr/portage/packages/*
+
 exit
 
 EOF
