@@ -44,7 +44,7 @@ echo -e "$userpassword\n$userpassword" | passwd $user
 gpasswd -a $user wheel
 
 mv /home/user/ /home/$user/
-rm /home/$user/installscript.sh
+rm /home/$user/livecd_install.sh
 
 grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
