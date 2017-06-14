@@ -34,7 +34,7 @@ mkfs.ext4 -F /dev/$partition
 tune2fs -O ^metadata_csum /dev/$partition
 mount /dev/$partition gentoo
 
-unsquashfs -fd gentoo /mnt/cdrom/image.squashfs
+unsquashfs -f -d gentoo /mnt/cdrom/image.squashfs
 
 cat << EOF | chroot gentoo
 
