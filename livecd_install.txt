@@ -36,12 +36,19 @@ unsquashfs -d gentoo /mnt/cdrom/image.squashfs
 
 cat << EOF | chroot gentoo
 
+echo -e "$rootpassword\n$rootpassword" | passwd
+useradd $user
+echo -e "$userpassword\n$userpassword" | passwd $user
+gpasswd -a $user wheel
+
+mv /home/user/ /home/$user/
+rm /home/$user/installscript.sh
+
 grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
 
 sed -i "s@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s@urxvt -e sudo ./installscript.sh \&@@" /home/user/.bash_profile
-
 
 EOF
 
