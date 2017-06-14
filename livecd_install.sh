@@ -49,6 +49,7 @@ chown -R $user /home/$user/
 grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
 
+sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
 sed -i "s@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s@urxvt -e sudo ./livecd_install.sh \&@@" /home/$user/.bash_profile
 sed -i "2,3 s/^#*//" /home/$user/.bash_profile
