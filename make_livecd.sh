@@ -79,7 +79,7 @@ sed -i 's@    if [[ $yn == "Y" || $yn == "y" ]]; then@#    if [[ $yn == "Y" || $
 sed -i 's@    fi@#    fi@' /home/user/.bash_profile
 sed -i "s@twm\&@twm\&\nurxvt -e sudo ./livecd_install.sh \&@" /home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_install.sh -O /home/user/livecd_install.sh
-chmod +x /home/user/installscript.sh
+chmod +x /home/user/livecd_install.sh
 
 exit
 
