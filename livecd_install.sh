@@ -39,7 +39,7 @@ unsquashfs -f -d gentoo /mnt/cdrom/image.squashfs
 cat << EOF | chroot gentoo
 
 echo -e "$rootpassword\n$rootpassword" | passwd
-useradd $user
+useradd -M $user
 echo -e "$userpassword\n$userpassword" | passwd $user
 gpasswd -a $user wheel
 
@@ -56,6 +56,7 @@ sed -i "2,3 s/^#*//" /home/$user/.bash_profile
 sed -i "10 s/^#*//" /home/$user/.bash_profile
 sed -i "/urxvt -e sudo .\/livecd_install.sh &/d" /home/$user/.bash_profile
 
+userdel user
 rm /home/$user/livecd_install.sh
 
 EOF
