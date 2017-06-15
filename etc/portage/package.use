@@ -1,4 +1,6 @@
 #preference
+app-misc/neofetch X
+media-gfx/krita color-management
 app-emulation/wine -custom-cflags
 x11-wm/xmonad -default-term
 sys-boot/grub -grub_platforms_efi-64
