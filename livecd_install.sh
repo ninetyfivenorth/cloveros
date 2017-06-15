@@ -36,7 +36,6 @@ if [[ $partitioning = "a" ]]; then
     echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/$drive
 fi
 mkfs.ext4 -F /dev/$partition
-tune2fs -O ^metadata_csum /dev/$partition
 mount /dev/$partition gentoo
 
 unsquashfs -f -d gentoo /mnt/cdrom/image.squashfs
