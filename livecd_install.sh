@@ -46,21 +46,24 @@ cat << EOF | chroot gentoo
 echo -e "$rootpassword\n$rootpassword" | passwd
 useradd -M $user
 echo -e "$userpassword\n$userpassword" | passwd $user
-gpasswd -a $user wheel
-
-mv /home/user/ /home/$user/
-chown -R $user /home/$user/
 
 grub-install /dev/$drive
 grub-mkconfig > /boot/grub/grub.cfg
 
 sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
 sed -i "s@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
-sed -i "/urxvt -e sudo .\/livecd_install.sh &/d" /home/$user/.bash_profile
-sed -i "2,3 s/^#*//" /home/$user/.bash_profile
-sed -i "10 s/^#*//" /home/$user/.bash_profile
+sed -i "/urxvt -e sudo .\/livecd_install.sh &/d" /home/user/.bash_profile
+sed -i "2,3 s/^#*//" /home/user/.bash_profile
+sed -i "10 s/^#*//" /home/user/.bash_profile
 
-userdel user
+gpasswd -a $user wheel
+gpasswd -a $user video
+gpasswd -a $user audio
+mv /home/user/ /home/$user/
+chown -R $user /home/$user/
+if [[ $user != "user" ]]; then
+    userdel user
+fi
 rm /home/$user/livecd_install.sh
 
 EOF
