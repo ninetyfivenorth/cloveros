@@ -90,5 +90,5 @@ EOF
 
 cd ..
 umount -l image/*
-mksquashfs image image.squashfs -b 1024k -comp xz
+mksquashfs image image.squashfs -comp xz -Xbcj x86 -b 262144 -Xdict-size 100%
 rm -Rf image/
