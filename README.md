@@ -27,7 +27,7 @@ No, this uses regular Gentoo Portage only. Same versions and USE flag options.
 
 ### What makes CloverOS different/special/why is it made/what is it/who/where/when/how
 
-CloverOS is Gentoo with an altered default `/etc/portage/make.conf`. The install scripts can be used to install it to hard drive, generate a LiveCD and create the CloverOS repo. It focuses on speed and low ram usage, doesn't have systemd or other service bloat, and has software out of the box. There's some dotfiles in the home directory by default to save time. CloverOS should be an all-around good desktop distro while remaining simple. The default WM is twm, which allows you to move, resize, minimize/restore windows and launch programs.
+CloverOS is Gentoo with an altered default `/etc/portage/make.conf`. The install scripts can be used to install it to hard drive, generate a LiveCD and create the CloverOS repo. It focuses on speed and low ram usage, doesn't have systemd or other service bloat, and has software out of the box. There's some dotfiles in the home directory by default to save time. CloverOS should be an all-around good desktop distro while remaining simple, similar to CrunchBang. The default WM is twm, which allows you to move, resize, minimize/restore windows and launch programs.
 
 ### Why twm?
 
