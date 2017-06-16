@@ -7,8 +7,8 @@ rootpassword=password
 user=user
 userpassword=password
 
-mkdir gentoo
-cd gentoo
+mkdir image
+cd image
 
 wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170525.tar.bz2
 tar pxf stage3*
@@ -89,6 +89,6 @@ exit
 EOF
 
 cd ..
-umount -l gentoo/*
-mksquashfs gentoo image.squashfs -b 1024k -comp xz
-rm -Rf gentoo/
+umount -l image/*
+mksquashfs image image.squashfs -b 1024k -comp xz
+rm -Rf image/
