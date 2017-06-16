@@ -21,7 +21,7 @@ CloverOS GNU/Linux is a GNU/Linux distro that runs on Gentoo GNU/Linux. It consi
 `emerge -uavD filezilla world`
 
 ### Installing DE
-`emerge mate` / `emerge plasma-desktop` / `emerge lxde-meta` / `xfce-meta`
+`emerge mate` / `emerge plasma-desktop` / `emerge lxde-meta` / `emerge xfce-meta`
 
 `sed -i "s/twm/startxfce4/" ~/.bash_profile`
 
