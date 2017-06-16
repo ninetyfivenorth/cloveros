@@ -20,6 +20,11 @@ CloverOS GNU/Linux is a GNU/Linux distro that runs on Gentoo GNU/Linux. It consi
 
 `emerge -uavD filezilla world`
 
+### Installing DE
+`emerge mate` / `emerge plasma-desktop` / `emerge lxde-meta` / `xfce-meta`
+
+`sed -i "s/twm/startxfce4/" ~/.bash_profile`
+
 ## FAQ
 
 ### Is this an overlay?
@@ -31,7 +36,7 @@ CloverOS is Gentoo with an altered default `/etc/portage/make.conf`. The install
 
 ### Why twm?
 
-Low ram footprint. You can move windows by holding alt+leftclick, resize windows with alt+rightclick and close windows with ctrl+alt+rightclick. The taskbar minimizes and restores windows. twm's settings are in `~/.twmrc`. You can also `emerge mate`, `plasma-desktop`, `lxde-meta`, or `xfce-meta` and set it to run by default eg: `sed -i "s/twm/startxfce4/" ~/.bash_profile`
+Low ram footprint. You can move windows by holding alt+leftclick, resize windows with alt+rightclick and close windows with ctrl+alt+rightclick. The taskbar minimizes and restores windows. twm's settings are in `~/.twmrc`.
 
 ### What programs does this come with?
 
