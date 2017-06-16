@@ -34,6 +34,8 @@ No, this uses regular Gentoo Portage only. Same versions and USE flag options.
 
 CloverOS is Gentoo with an altered default `/etc/portage/make.conf`. The install scripts can be used to install it to hard drive, generate a LiveCD and create the CloverOS repo. It focuses on speed and low ram usage, doesn't have systemd or other service bloat, and has software out of the box. There's some dotfiles in the home directory by default to save time. CloverOS should be an all-around good desktop distro while remaining simple, similar to CrunchBang. The default WM is twm, which allows you to move, resize, minimize/restore windows and launch programs.
 
+CloverOS is an out of the box desktop. If you use Gentoo, you're probably gonna come to a similar conclusion as CloverOS (package.use, installed packages). You're basically using my Gentoo install. The real question is why run this over CrunchBang/BunsenLabs. And that answer is better speed, ram use andprograms/configuration being targeted to the average /g/ user.
+
 ### Why twm?
 
 Low ram footprint. You can move windows by holding alt+leftclick, resize windows with alt+rightclick and close windows with ctrl+alt+rightclick. The taskbar minimizes and restores windows. twm's settings are in `~/.twmrc`.
