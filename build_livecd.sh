@@ -75,7 +75,6 @@ chown -R $user /home/$user/
 emerge gparted squashfs-tools
 sed -i "s@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@" /etc/inittab
 sed -i "s@twm\&@twm\&\nurxvt -e sudo ./livecd_install.sh \&@" /home/user/.bash_profile
-sed -i "s@/home/user/@/home/$user/@" /home/user/.rtorrent.rc
 sed -i "2,3 s/^/#/" /home/user/.bash_profile
 sed -i "10 s/^/#/" /home/user/.bash_profile
 wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_install.sh -O /home/user/livecd_install.sh

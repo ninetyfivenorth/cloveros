@@ -55,6 +55,7 @@ sed -i "s@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@c1:12
 sed -i "/urxvt -e sudo .\/livecd_install.sh &/d" /home/user/.bash_profile
 sed -i "2,3 s/^#*//" /home/user/.bash_profile
 sed -i "9 s/^#*//" /home/user/.bash_profile
+sed -i "s@/home/user/@/home/$user/@" /home/user/.rtorrent.rc
 
 gpasswd -a $user wheel
 gpasswd -a $user video
