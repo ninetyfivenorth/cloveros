@@ -43,14 +43,23 @@ Low ram footprint. You can move windows by holding alt+leftclick, resize windows
 ### What programs does this come with?
 
 Terminal - urxvt
+
 File manager - xfe
+
 Wifi configuration - wpa_gui
+
 Browser - firefox
+
 Text editor - emacs
+
 Graphic editor - gimp
+
 Video player - smplayer / mpv
+
 FTP client - filezilla
+
 Torrent client - rtorrent
+
 IRC client - weechat
 
 ### Package isn't available
