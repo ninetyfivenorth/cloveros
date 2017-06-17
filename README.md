@@ -54,7 +54,7 @@ Torrent client - rtorrent
 IRC client - weechat
 
 ### Package isn't available
-Make an issue so I can add the package. In the meantime, edit /etc/make.conf and edit the following line:
+Make an issue so I can add the package. In the meantime, edit /etc/portage/make.conf and edit the following line:
 
 `EMERGE_DEFAULT_OPTS="--keep-going=y --autounmask-write=y --jobs=2 -G"`
 
