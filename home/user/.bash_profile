@@ -9,7 +9,7 @@ if [ -z "$DISPLAY" ]; then
     wms[3]=i3
     wms[a]=awesome
     wms[k]=startkde
-    wms[m]=startmate
+    wms[m]=mate-session
     wms[x]=startxfce4
     wms[l]=startlxde
     wmpkgs[y]=twm
