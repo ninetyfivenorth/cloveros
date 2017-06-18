@@ -37,8 +37,8 @@ if [ -z "$DISPLAY" ]; then
         fi
         export DISPLAY=:0
         X&
-	$($wms[$choice])&
+	${wms[$choice]}&
         sleep 1
-        $($wmpost[$choice])
+        ${wmpost[$choice]}
     fi
 fi
