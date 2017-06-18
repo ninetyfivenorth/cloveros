@@ -1,18 +1,19 @@
 #!/bin/bash
 #
-# Name: installscript.sh
-# Description: The CloverOS installation script.
+# Name: build_live.sh
+# Description: Admin script for building the livecd.
 # Authors: See https://github.com/chiru-no/cloveros
 # Version: dev
 
 main() {
     check_as_root
-    partition
-    set_password
+    set_password_auto
     setup_chroot
     config_setup
-    system_sw_install
+    kernel_install
+    bootloader_install
     user_sw_install
+    sys_sw_config
     sw_config
     reboot_system
 }
@@ -47,54 +48,19 @@ check_as_root() {
     fi
 }
 
-# Partition disks
-# Usage: partition
-partition() {
-    read -p "Automatic partitioning (a) or manual partitioning? (m) [a/m] " -n 1 partitioning
-    echo
-    if [[ $partitioning = "a" ]]; then
-        read -e -p "Enter drive for CloverOS installation: " -i "/dev/sda" drive
-        partition=${drive}1
-    elif [[ $partitioning = "m" ]]; then
-        read -e -p "Enter partition for CloverOS installation: " -i "/dev/sda1" partition
-        drive=${partition%"${partition##*[!0-9]}"}
-    else
-        p_error "Invalid option!"
-        exit 1
-    fi
-    drive=${drive#*/dev/}
-    partition=${partition#*/dev/}
-    read -p "Partitioning: $partitioning
-    Drive: /dev/$drive
-    Partition: /dev/$partition
-    Is this correct? [y/n] " -n 1 yn
-    if [[ $yn != "y" ]]; then
-        exit 1
-    fi
-    echo
-    
-    if [[ $partitioning = "a" ]]; then
-        echo -e "o\nn\np\n1\n\n\nw" | fdisk /dev/$drive
-    fi
-    
-    mkfs.ext4 -F /dev/$partition
-    tune2fs -O ^metadata_csum /dev/$partition
-    mount /dev/$partition gentoo
-}
-
 # Set passwords
 # Usage: set_password
-set_password() {
-    read -p "Enter preferred root password " rootpassword
-    read -p "Enter preferred username " user
-    read -p "Enter preferred user password " userpassword
+set_password_auto() {
+    rootpassword=password
+    user=user
+    userpassword=password
 }
 
 # Sets up chrooting
 # Usage: setup_chroot
 setup_chroot() {
-    mkdir gentoo
-    cd gentoo
+    mkdir image
+    cd image
 
     wget http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64/stage3-amd64-20170615.tar.bz2
     tar pxf stage3*
@@ -120,14 +86,17 @@ config_setup () {
 #   genkernel --kernel-config=config.amd64 all
 }
 
-# Sets up system software, kernel, and bootloader installation
-# Usage: system_sw_install
-
-system_sw_install() {
+# Installs the kernel
+# Usage: kernel_install
+kernel_install() {
     wget -O - https://raw.githubusercontent.com/chiru-no/cloveros/master/kernel.tar.xz | tar xJ -C /boot/
     mkdir /lib/modules/
     wget -O - https://raw.githubusercontent.com/chiru-no/cloveros/master/modules.tar.xz | tar xJ -C /lib/modules/
+}
 
+# Installs the bootloader
+# Usage: bootloader_install
+bootloader_install() {
     emerge grub dhcpcd
 
     grub-install /dev/$drive
@@ -150,21 +119,28 @@ user_sw_install() {
     rm -Rf /usr/portage/packages/*
 }
 
-# Configuration of user software, and final preparation
-sw_config() {
+
+# System software configuration
+# Usage: sys_sw_config
+sys_sw_config() {
     sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
     sed -Ei "s@c([2-6]):2345:respawn:/sbin/agetty 38400 tty@#\0@" /etc/inittab
     sed -i "s@c1:12345:respawn:/sbin/agetty 38400 tty1 linux@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@" /etc/inittab
     sed -i "s/set timeout=5/set timeout=0/" /boot/grub/grub.cfg
-    echo -e "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf
+    echo -e "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel\nupdate_config=1" > /etc/wpa_supplicant/wpa_supplicant.conf   
     
+    gpasswd -a $user audio
+    gpasswd -a $user video
+}
+
+# Configuration of user software, and final preparation
+sw_config() {
     rc-update add alsasound default
     rc-update add wpa_supplicant default
     eselect fontconfig enable 52-infinality.conf
     eselect infinality set infinality
     eselect lcdfilter set infinality
-    gpasswd -a $user audio
-    gpasswd -a $user video
+
     cd /home/$user/
     rm .bash_profile
     
@@ -183,14 +159,34 @@ sw_config() {
     
     chown -R $user /home/$user/
     
+    livecd_config
+    
 #   Exit the chroot
     exit
 }
 
-# Reboot the system; made as a function for different means of rebooting
-# Usage: reboot_system
-reboot_system() {
-    reboot
+# Extra configuration for livecd building
+# Usage: livecd_config
+livecd_config() {
+    emerge gparted squashfs-tools
+    sed -i "s@c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux@c1:12345:respawn:/sbin/agetty -a user --noclear 38400 tty1 linux@" /etc/inittab
+    sed -i "s@twm\&@twm\&\nurxvt -e sudo ./livecd_install.sh \&@" /home/user/.bash_profile
+    sed -i "2,3 s/^/#/" /home/user/.bash_profile
+    sed -i "10 s/^/#/" /home/user/.bash_profile
+    wget https://raw.githubusercontent.com/chiru-no/cloveros/master/livecd_install.sh -O /home/user/livecd_install.sh
+    chmod +x /home/user/livecd_install.sh
+
+    emerge -uvD world
+    emerge --depclean
+    rm -Rf /usr/portage/packages/*
+}
+
+# Create the squashfs and delete the image directory
+# Usage: create_squashfs
+create_squashfs() {
+    umount -l image/*
+    mksquashfs image image.squashfs -b 1024k -comp xz -Xbcj x86 -Xdict-size 100%
+    rm -Rf image/
 }
 
 main "$@"
