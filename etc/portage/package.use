@@ -1,5 +1,8 @@
 #preference
+media-fonts/acroread-asianfonts -minimal
+kde-plasma/plasma-meta bluetooth grub
 app-misc/neofetch X
+app-emulation/virtualbox-guest-additions X
 media-gfx/krita color-management
 app-emulation/wine -custom-cflags
 x11-wm/xmonad -default-term
@@ -36,6 +39,8 @@ app-misc/recoll qt5
 media-gfx/fontforge X gtk
 media-gfx/graphviz gtk
 app-emulation/virt-manager gtk
+sys-apps/xdg-desktop-portal-gtk X
+sys-apps/flatpak gtk
 media-video/xine-ui curl X
 app-admin/conky X
 dev-lang/R X cairo
