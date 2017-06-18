@@ -29,7 +29,7 @@ if [ -z "$DISPLAY" ]; then
     wmspost[x]="feh --bg-max wallpaper.png"
     wmspost[l]="feh --bg-max wallpaper.png"
     if [ -n "${wms[$choice] + 1}" ]; then
-        if [ ! -f /usr/bin/$wms[$choice] ]; then
+        if [ ! -f /usr/bin/${wms[$choice]} ]; then
             echo
             echo ${wms[$choice]} is not installed. Install it by running:
             echo $ sudo emerge ${wmspkg[$choice]}
